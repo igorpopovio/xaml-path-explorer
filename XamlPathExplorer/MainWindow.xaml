@@ -7,6 +7,8 @@
                       xmlns:local="clr-namespace:XamlPathExplorer"
                       mc:Ignorable="d"
                       Title="Xaml Path Explorer"
+                      ResizeMode="CanResizeWithGrip"
+                      BorderBrush="{DynamicResource AccentColorBrush}"
                       Width="525"
                       Height="350">
     <Controls:MetroWindow.Resources>
