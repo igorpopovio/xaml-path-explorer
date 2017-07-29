@@ -20,9 +20,6 @@
             <Setter Property="Height"
                     Value="256" />
         </Style>
-        <Style x:Key="PathButtonViewboxStyle"
-               TargetType="{x:Type Viewbox}">
-        </Style>
         <Style x:Key="PathButtonPathStyle"
                TargetType="{x:Type Path}">
             <Setter Property="Stroke"
@@ -34,16 +31,7 @@
         </Style>
     </UserControl.Resources>
     <Button Style="{StaticResource PathButtonStyle}">
-
-            <Path Style="{StaticResource PathButtonPathStyle}"
-                  Data="{Binding PathGeometry}"
-                  RenderTransformOrigin="0.5,0.5">
-                <!--<Path.RenderTransform>
-                    <ScaleTransform ScaleX="1"
-                                    ScaleY="1" />
-                </Path.RenderTransform>-->
-            </Path>
-
-
+        <Path Style="{StaticResource PathButtonPathStyle}"
+              Data="{Binding PathGeometry}" />
     </Button>
 </UserControl>
