@@ -29,13 +29,14 @@ namespace XamlPathExplorer {
             var rtm = @"C:\Projects\napa\monitor-team\rtm";
             var dss = @"C:\Projects\napa\monitor-team\dss";
             var lc = @"C:\Projects\napa\monitor-team\loading-computer\Client";
+            var test = @"C:\Projects\napa\monitor-team\test";
             var defaultDirectory = rtm;
             // LoadDummyPaths();
             LoadPathsFrom(defaultDirectory);
         }
 
         private void LoadPathsFrom(string defaultDirectory) {
-            var pathGeometryRegex = $@"[MLCV]\s*[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?[,\s]+";
+            var pathGeometryRegex = $@"(?<=[""<>])[MLCV]\s*[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?[,\s]+";
             var regex = new Regex(pathGeometryRegex, RegexOptions.IgnoreCase & RegexOptions.Multiline & RegexOptions.Compiled);
 
             var directoryInfo = new DirectoryInfo(defaultDirectory);
