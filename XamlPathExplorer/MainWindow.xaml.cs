@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -28,7 +29,7 @@ namespace XamlPathExplorer {
             var rtm = @"C:\Projects\napa\monitor-team\rtm";
             var dss = @"C:\Projects\napa\monitor-team\dss";
             var lc = @"C:\Projects\napa\monitor-team\loading-computer\Client";
-            var defaultDirectory = lc;
+            var defaultDirectory = rtm;
             // LoadDummyPaths();
             LoadPathsFrom(defaultDirectory);
         }
@@ -54,6 +55,7 @@ namespace XamlPathExplorer {
                         var startingIndex = FindBackwardDelimiters(file, fileContents, match.Index, delimiters) + 1;
                         var endingIndex = FindForwardDelimiters(file, fileContents, match.Index, delimiters);
                         var pathGeometry = fileContents.Substring(startingIndex, endingIndex - startingIndex);
+                        pathGeometry = HttpUtility.HtmlDecode(pathGeometry);
                         if (IsValidGeometry(pathGeometry))
                             LoadGeometry(pathGeometry);
                         else
