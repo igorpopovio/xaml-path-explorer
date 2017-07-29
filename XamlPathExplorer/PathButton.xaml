@@ -16,16 +16,16 @@
             <Setter Property="Margin"
                     Value="5" />
             <Setter Property="Width"
-                    Value="256" />
+                    Value="128" />
             <Setter Property="Height"
-                    Value="256" />
+                    Value="128" />
         </Style>
         <Style x:Key="PathButtonPathStyle"
                TargetType="{x:Type Path}">
             <Setter Property="Stroke"
                     Value="{DynamicResource AccentColorBrush}" />
             <Setter Property="StrokeThickness"
-                    Value="3" />
+                    Value="2" />
             <Setter Property="Stretch"
                     Value="Uniform" />
         </Style>
