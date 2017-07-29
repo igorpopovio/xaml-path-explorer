@@ -29,8 +29,10 @@ namespace XamlPathExplorer {
             var rtm = @"C:\Projects\napa\monitor-team\rtm";
             var dss = @"C:\Projects\napa\monitor-team\dss";
             var lc = @"C:\Projects\napa\monitor-team\loading-computer\Client";
-            var test = @"C:\Projects\napa\monitor-team\test";
-            var defaultDirectory = rtm;
+            var nfd = @"C:\Projects\napa\nfd";
+            var napa = @"C:\Projects\napa\napa\napa.net";
+            var telerik = @"C:\Program Files(x86)\Telerik\UI for WPF Q2 2016\Themes.Implicit\WPF40\Green\Themes";
+            var defaultDirectory = telerik;
             // LoadDummyPaths();
             LoadPathsFrom(defaultDirectory);
         }
