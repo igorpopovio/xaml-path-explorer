@@ -31,10 +31,8 @@ namespace XamlPathExplorer {
         }
 
         private void LoadPathsFrom(string defaultDirectory) {
-            var numberRegex = @"[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?";
-            var pathGeometryRegex = $@"[MLCV]\s*{numberRegex}(?:[,\s]{numberRegex})*";
+            var pathGeometryRegex = $@"[MLCV]\s*[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?[,\s]+";
             var regex = new Regex(pathGeometryRegex, RegexOptions.IgnoreCase & RegexOptions.Multiline & RegexOptions.Compiled);
-
 
             var directoryInfo = new DirectoryInfo(defaultDirectory);
             var files = "";
