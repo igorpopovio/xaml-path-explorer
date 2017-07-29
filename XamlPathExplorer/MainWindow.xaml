@@ -11,9 +11,10 @@
                       Title="Xaml Path Explorer"
                       ResizeMode="CanResizeWithGrip"
                       BorderBrush="{DynamicResource AccentColorBrush}"
+                      Loaded="MetroWindow_Loaded"
                       Width="600"
                       Height="300">
-    <WrapPanel Margin="10">
+    <WrapPanel x:Name="wrapPanel" Margin="10">
         <i:Interaction.Behaviors>
             <ei:FluidMoveBehavior AppliesTo="Children"
                                   Duration="0:0:0.5">
