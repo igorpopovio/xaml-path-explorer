@@ -36,20 +36,31 @@ namespace XamlPathExplorer {
 
             var directoryInfo = new DirectoryInfo(defaultDirectory);
             var files = "";
-            var index = 0;
+
             foreach (var file in directoryInfo.GetFiles("*.xaml", SearchOption.AllDirectories)) {
                 var fileContents = file.OpenText().ReadToEnd();
-                var match = regex.Match(fileContents, index);
-                if (match.Success) {
-                    var startingIndex = FindBackwardDelimiters(file, fileContents, match.Index, "\"") + 1;
-                    var endingIndex = FindForwardDelimiters(file, fileContents, match.Index, "\"");
-                    var pathGeometry = fileContents.Substring(startingIndex, endingIndex - startingIndex);
-                    if (IsValidGeometry(pathGeometry))
-                        LoadGeometry(pathGeometry);
-                    else
-                        System.Windows.Forms.MessageBox.Show($"Failed to render geometry: {pathGeometry}\n from\n{file.FullName}!");
-                    // index = endingIndex;
+
+                var delimiters = "\"<>";
+
+                var index = 0;
+                var shouldContinue = true;
+
+                while (shouldContinue) {
+                    var match = regex.Match(fileContents, index);
+                    if (match.Success) {
+                        var startingIndex = FindBackwardDelimiters(file, fileContents, match.Index, delimiters) + 1;
+                        var endingIndex = FindForwardDelimiters(file, fileContents, match.Index, delimiters);
+                        var pathGeometry = fileContents.Substring(startingIndex, endingIndex - startingIndex);
+                        if (IsValidGeometry(pathGeometry))
+                            LoadGeometry(pathGeometry);
+                        else
+                            System.Windows.Forms.MessageBox.Show($"Failed to render geometry: {pathGeometry}\n from\n{file.FullName}!");
+                        index = endingIndex;
+                    }
+                    shouldContinue = match.Success;
                 }
+
+
 
                 files += file.FullName + "\n";
             }
