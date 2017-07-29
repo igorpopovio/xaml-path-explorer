@@ -44,11 +44,13 @@ namespace XamlPathExplorer {
                     var startingIndex = FindBackwardDelimiters(file, fileContents, match.Index, "\"") + 1;
                     var endingIndex = FindForwardDelimiters(file, fileContents, match.Index, "\"");
                     var pathGeometry = fileContents.Substring(startingIndex, endingIndex - startingIndex);
-                    if (IsValidGeometry(pathGeometry)) LoadGeometry(pathGeometry);
-                    else System.Windows.Forms.MessageBox.Show($"Failed to render geometry: {pathGeometry}\n from\n{file.FullName}!");
+                    if (IsValidGeometry(pathGeometry))
+                        LoadGeometry(pathGeometry);
+                    else
+                        System.Windows.Forms.MessageBox.Show($"Failed to render geometry: {pathGeometry}\n from\n{file.FullName}!");
                     // index = endingIndex;
                 }
-                
+
                 files += file.FullName + "\n";
             }
         }
