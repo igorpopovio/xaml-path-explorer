@@ -31,6 +31,8 @@
                     Value="{DynamicResource AccentColorBrush}" />
             <Setter Property="StrokeThickness"
                     Value="1" />
+            <Setter Property="Stretch"
+                    Value="Fill" />
         </Style>
     </UserControl.Resources>
     <Button Style="{StaticResource PathButtonStyle}">
