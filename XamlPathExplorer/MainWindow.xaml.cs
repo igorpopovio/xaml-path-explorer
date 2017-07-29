@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,7 +25,24 @@ namespace XamlPathExplorer {
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e) {
-            LoadDummyPaths();
+            var defaultDirectory = @"C:\Projects\napa\monitor-team\loading-computer\Client";
+            // LoadDummyPaths();
+            LoadPathsFrom(defaultDirectory);
+        }
+
+        private void LoadPathsFrom(string defaultDirectory) {
+            var numberRegex = @"[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?";
+            var pathGeometryRegex = $@"[MLCV]\s*{numberRegex}(?:[,\s]{numberRegex})*";
+            var regex = new Regex(pathGeometryRegex, RegexOptions.IgnoreCase & RegexOptions.Multiline & RegexOptions.Compiled);
+
+            
+            var directoryInfo = new DirectoryInfo(defaultDirectory);
+            var files = "";
+            foreach (var file in directoryInfo.GetFiles("*.xaml", SearchOption.AllDirectories)) {
+                var match = regex.Match(file.OpenText().ReadToEnd(), 0);
+                if (match.Success) System.Windows.Forms.MessageBox.Show("Found in "  + file.FullName + ":\n"  + match.Value + " at position: " + match.Index);
+                files += file.FullName + "\n";
+            }
         }
 
         private void LoadDummyPaths() {
