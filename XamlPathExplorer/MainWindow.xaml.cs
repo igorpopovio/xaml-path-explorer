@@ -25,7 +25,10 @@ namespace XamlPathExplorer {
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e) {
-            var defaultDirectory = @"C:\Projects\napa\monitor-team\loading-computer\Client";
+            var rtm = @"C:\Projects\napa\monitor-team\rtm";
+            var dss = @"C:\Projects\napa\monitor-team\dss";
+            var lc = @"C:\Projects\napa\monitor-team\loading-computer\Client";
+            var defaultDirectory = lc;
             // LoadDummyPaths();
             LoadPathsFrom(defaultDirectory);
         }
