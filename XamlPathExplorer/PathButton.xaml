@@ -28,24 +28,22 @@
             <Setter Property="Stroke"
                     Value="{DynamicResource AccentColorBrush}" />
             <Setter Property="StrokeThickness"
-                    Value="1" />
+                    Value="3" />
             <Setter Property="Stretch"
-                    Value="Fill" />
+                    Value="Uniform" />
         </Style>
     </UserControl.Resources>
     <Button Style="{StaticResource PathButtonStyle}">
-        <Viewbox Style="{StaticResource PathButtonViewboxStyle}" >
 
             <Path Style="{StaticResource PathButtonPathStyle}"
                   Data="{Binding PathGeometry}"
                   RenderTransformOrigin="0.5,0.5">
-                <Path.RenderTransform>
-                    <ScaleTransform ScaleX=".6"
-                                    ScaleY=".6" />
-                </Path.RenderTransform>
+                <!--<Path.RenderTransform>
+                    <ScaleTransform ScaleX="1"
+                                    ScaleY="1" />
+                </Path.RenderTransform>-->
             </Path>
 
 
-        </Viewbox>
     </Button>
 </UserControl>
