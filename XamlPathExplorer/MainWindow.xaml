@@ -19,6 +19,10 @@
 
     <ScrollViewer>
         <WrapPanel x:Name="wrapPanel"
+                   AllowDrop="True"
+                   DragDrop.DragEnter="wrapPanel_DragEnter"
+                   DragDrop.DragLeave="wrapPanel_DragLeave"
+                   DragDrop.Drop="wrapPanel_Drop"
                    Margin="10">
             <i:Interaction.Behaviors>
                 <ei:FluidMoveBehavior AppliesTo="Children"

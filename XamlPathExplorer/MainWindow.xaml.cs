@@ -32,7 +32,7 @@ namespace XamlPathExplorer {
             var nfd = @"C:\Projects\napa\nfd";
             var napa = @"C:\Projects\napa\napa\napa.net";
             var telerik = @"C:\Program Files(x86)\Telerik\UI for WPF Q2 2016\Themes.Implicit\WPF40\Green\Themes";
-            var defaultDirectory = telerik;
+            var defaultDirectory = rtm;
             // LoadDummyPaths();
             LoadPathsFrom(defaultDirectory);
         }
@@ -106,6 +106,29 @@ namespace XamlPathExplorer {
 
         private void LoadGeometry(string geometry) {
             wrapPanel.Children.Add(new PathButton { PathGeometry = Geometry.Parse(geometry) });
+        }
+
+        Brush originalBackground = null;
+        private void wrapPanel_DragEnter(object sender, DragEventArgs e) {
+            originalBackground = wrapPanel.Background;
+            wrapPanel.Background = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+        }
+
+        private void wrapPanel_DragLeave(object sender, DragEventArgs e) {
+            wrapPanel.Background = originalBackground;
+        }
+
+        private void wrapPanel_Drop(object sender, DragEventArgs e) {
+            wrapPanel.Background = originalBackground;
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
+                // Note that you can have more than one file.
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                // Assuming you have one file that you care about, pass it off to whatever
+                // handling code you have defined.
+                wrapPanel.Children.Clear();
+                LoadPathsFrom(files[0]);
+            }
         }
     }
 }
