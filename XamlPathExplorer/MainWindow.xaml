@@ -12,7 +12,6 @@
                       ResizeMode="CanResizeWithGrip"
                       BorderBrush="{DynamicResource AccentColorBrush}"
                       WindowState="Maximized"
-                      Loaded="MetroWindow_Loaded"
                       Width="600"
                       Height="300"
                       AllowDrop="True"
