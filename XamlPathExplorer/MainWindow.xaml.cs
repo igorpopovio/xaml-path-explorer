@@ -79,18 +79,16 @@ namespace XamlPathExplorer {
             wrapPanel.Children.Add(new PathButton { PathGeometry = Geometry.Parse(geometry) });
         }
 
-        Brush originalBackground = null;
         private void wrapPanel_DragEnter(object sender, DragEventArgs e) {
-            originalBackground = wrapPanel.Background;
-            wrapPanel.Background = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            wrapPanel.Style = (Style)FindResource("DragEnter");
         }
 
         private void wrapPanel_DragLeave(object sender, DragEventArgs e) {
-            wrapPanel.Background = originalBackground;
+            wrapPanel.Style = (Style) FindResource("DragLeave");
         }
 
         private void wrapPanel_Drop(object sender, DragEventArgs e) {
-            wrapPanel.Background = originalBackground;
+            wrapPanel.Style = (Style)FindResource("DragLeave");
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
                 // Note that you can have more than one file.
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);

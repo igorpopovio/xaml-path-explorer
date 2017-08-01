@@ -18,6 +18,18 @@
                       DragDrop.DragEnter="wrapPanel_DragEnter"
                       DragDrop.DragLeave="wrapPanel_DragLeave"
                       DragDrop.Drop="wrapPanel_Drop">
+    <Controls:MetroWindow.Resources>
+        <Style x:Key="DragEnter"
+               TargetType="Panel">
+            <Setter Property="Background"
+                    Value="Blue" />
+        </Style>
+        <Style x:Key="DragLeave"
+               TargetType="Panel">
+            <Setter Property="Background"
+                    Value="{DynamicResource WindowBackgroundBrush}" />
+        </Style>
+    </Controls:MetroWindow.Resources>
     <ScrollViewer>
         <WrapPanel x:Name="wrapPanel"
                    Margin="10">
