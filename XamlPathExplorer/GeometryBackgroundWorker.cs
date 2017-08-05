@@ -46,6 +46,8 @@ namespace XamlPathExplorer {
                             // we need to have this only for a few items that fit in the current view
                             // if we have too many then the loading will be too slow
                             if (count < 100) Thread.Sleep(10);
+
+                            // FIXME: add progress bar and report proper percentage
                             ReportProgress(0, pathGeometry);
                             count++;
                         } else {
