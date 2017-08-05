@@ -25,11 +25,11 @@ namespace XamlPathExplorer {
             var regex = new Regex(pathGeometryRegex, RegexOptions.IgnoreCase & RegexOptions.Multiline & RegexOptions.Compiled);
 
             var directoryInfo = new DirectoryInfo(directory);
+            var delimiters = "\"<>";
 
             foreach (var file in directoryInfo.GetFiles("*.xaml", SearchOption.AllDirectories)) {
                 var fileContents = file.OpenText().ReadToEnd();
 
-                var delimiters = "\"<>";
 
                 var index = 0;
                 var shouldContinue = true;
