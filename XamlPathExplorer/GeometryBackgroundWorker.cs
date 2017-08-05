@@ -26,7 +26,7 @@ namespace XamlPathExplorer {
         }
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e) {
-            var files = LoadAllFilesFrom(e.Argument as string[], ".xaml");
+            var files = LoadAllFilesFrom(e.Argument as string[]);
 
             foreach (var file in files) {
                 var fileContents = file.OpenText().ReadToEnd();
@@ -58,16 +58,23 @@ namespace XamlPathExplorer {
             e.Result = count;
         }
 
-        private static IEnumerable<FileInfo> LoadAllFilesFrom(string[] filesArgument, string extension) {
+        private static IEnumerable<FileInfo> LoadAllFilesFrom(string[] filesArgument) {
             var files = new List<FileInfo>();
             foreach (var file in filesArgument) {
                 if (File.Exists(file)) {
                     var fileInfo = new FileInfo(file);
-                    if (fileInfo.Extension == extension)
-                        files.Add(fileInfo);
+                    switch (fileInfo.Extension) {
+                        case ".xaml":
+                            files.Add(fileInfo);
+                            break;
+                        case ".csproj":
+                        case ".sln":
+                            files.AddRange(LoadAllFilesFrom(new string[] { fileInfo.Directory.FullName }));
+                            break;
+                    }
                 } else if (Directory.Exists(file)) {
                     var directoryInfo = new DirectoryInfo(file);
-                    files.AddRange(directoryInfo.GetFiles($"*{extension}", SearchOption.AllDirectories));
+                    files.AddRange(directoryInfo.GetFiles("*.xaml", SearchOption.AllDirectories));
                 } else {
                     throw new Exception($"Cannot load path: {file}");
                 }
