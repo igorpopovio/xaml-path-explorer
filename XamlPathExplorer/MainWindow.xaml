@@ -22,7 +22,7 @@
         <Style x:Key="DragEnter"
                TargetType="Panel">
             <Setter Property="Background"
-                    Value="Blue" />
+                    Value="{DynamicResource HighlightBrush}" />
         </Style>
         <Style x:Key="DragLeave"
                TargetType="Panel">
