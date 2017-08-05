@@ -33,7 +33,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="25" />
         </Grid.RowDefinitions>
         <ScrollViewer>
             <WrapPanel x:Name="wrapPanel"
@@ -62,7 +62,8 @@
                    Grid.Row="1">
             <StatusBarItem>XAML Path Explorer</StatusBarItem>
             <Separator Style="{StaticResource MetroStatusBarSeparator}" />
-            <StatusBarItem x:Name="statusBarItem" />
+            <StatusBarItem x:Name="statusBarItem"
+                           Content="Ready! Drag and drop files in the app..." />
         </StatusBar>
     </Grid>
 </Controls:MetroWindow>
