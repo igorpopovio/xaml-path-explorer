@@ -42,7 +42,10 @@ namespace XamlPathExplorer {
                         var pathGeometry = fileContents.Substring(startingIndex, endingIndex - startingIndex);
                         pathGeometry = HttpUtility.HtmlDecode(pathGeometry);
                         if (IsValidGeometry(pathGeometry)) {
-                            // Thread.Sleep(10);
+                            // the sleep adds a nice effect when adding items
+                            // we need to have this only for a few items that fit in the current view
+                            // if we have too many then the loading will be too slow
+                            if (count < 100) Thread.Sleep(10);
                             ReportProgress(0, pathGeometry);
                             count++;
                         } else {
