@@ -56,20 +56,24 @@
             </WrapPanel>
         </ScrollViewer>
 
-        <Border x:Name="dragAndDropBorder"
-                Grid.Row="1"
-                AllowDrop="True"
-                DragDrop.DragEnter="wrapPanel_DragEnter"
-                DragDrop.DragLeave="wrapPanel_DragLeave"
-                DragDrop.Drop="wrapPanel_Drop"
-                BorderThickness="0"
-                Background="Transparent">
+        <Grid x:Name="dragAndDropContainer"
+              Grid.Row="1"
+              AllowDrop="True"
+              DragDrop.DragEnter="wrapPanel_DragEnter"
+              DragDrop.DragLeave="wrapPanel_DragLeave"
+              DragDrop.Drop="wrapPanel_Drop"
+              Background="Transparent">
             <Rectangle x:Name="dragAndDropRectangle"
                        Margin="5"
                        Stroke="{DynamicResource HighlightBrush}"
                        StrokeThickness="2"
                        StrokeDashArray="5" />
-        </Border>
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="35"
+                       Foreground="{DynamicResource TextBrush}"
+                       Text="Drag and drop files here..." />
+        </Grid>
 
         <StatusBar x:Name="statusBar"
                    Grid.Row="2">
