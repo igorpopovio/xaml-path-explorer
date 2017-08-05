@@ -3,11 +3,21 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
 using System.Windows.Media;
 
 namespace XamlPathExplorer {
     public class GeometryBackgroundWorker : BackgroundWorker {
+        private const string Delimiters = "\"<>";
+        private const string PathGeometryRegexString =
+            @"(?<=[""<>])[MLCV]\s*[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?[,\s]+";
+        private readonly Regex PathGeometryRegex =
+            new Regex(PathGeometryRegexString,
+                RegexOptions.IgnoreCase & RegexOptions.Multiline & RegexOptions.Compiled);
+
+        private int count;
+
         public GeometryBackgroundWorker() {
             WorkerReportsProgress = true;
             WorkerSupportsCancellation = true;
@@ -18,27 +28,20 @@ namespace XamlPathExplorer {
             var worker = (BackgroundWorker)sender;
             var files = e.Argument as string[];
             var directory = files[0];
-            int count = 0;
-
-
-            var pathGeometryRegex = $@"(?<=[""<>])[MLCV]\s*[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?[,\s]+";
-            var regex = new Regex(pathGeometryRegex, RegexOptions.IgnoreCase & RegexOptions.Multiline & RegexOptions.Compiled);
 
             var directoryInfo = new DirectoryInfo(directory);
-            var delimiters = "\"<>";
 
             foreach (var file in directoryInfo.GetFiles("*.xaml", SearchOption.AllDirectories)) {
                 var fileContents = file.OpenText().ReadToEnd();
-
 
                 var index = 0;
                 var shouldContinue = true;
 
                 while (shouldContinue) {
-                    var match = regex.Match(fileContents, index);
+                    var match = PathGeometryRegex.Match(fileContents, index);
                     if (match.Success) {
-                        var startingIndex = FindBackwardDelimiters(file, fileContents, match.Index, delimiters) + 1;
-                        var endingIndex = FindForwardDelimiters(file, fileContents, match.Index, delimiters);
+                        var startingIndex = FindBackwardDelimiters(file, fileContents, match.Index, Delimiters) + 1;
+                        var endingIndex = FindForwardDelimiters(file, fileContents, match.Index, Delimiters);
                         var pathGeometry = fileContents.Substring(startingIndex, endingIndex - startingIndex);
                         pathGeometry = HttpUtility.HtmlDecode(pathGeometry);
                         if (IsValidGeometry(pathGeometry)) {
