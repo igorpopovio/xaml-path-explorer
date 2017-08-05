@@ -18,6 +18,7 @@ namespace XamlPathExplorer {
             var worker = (BackgroundWorker)sender;
             var files = e.Argument as string[];
             var directory = files[0];
+            int count = 0;
 
 
             var pathGeometryRegex = $@"(?<=[""<>])[MLCV]\s*[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?[,\s]+";
@@ -43,6 +44,7 @@ namespace XamlPathExplorer {
                         if (IsValidGeometry(pathGeometry)) {
                             // Thread.Sleep(10);
                             worker.ReportProgress(0, pathGeometry);
+                            count++;
                         } else {
                             // FIXME: you can't update the UI from background worker threads
                             // use https://stackoverflow.com/questions/1044460/unhandled-exceptions-in-backgroundworker
@@ -53,6 +55,7 @@ namespace XamlPathExplorer {
                     shouldContinue = match.Success;
                 }
             }
+            e.Result = count;
         }
 
         private int FindForwardDelimiters(FileInfo file, string fileContents, int index, string delimiters) {

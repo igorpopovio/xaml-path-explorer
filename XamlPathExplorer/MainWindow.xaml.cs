@@ -31,9 +31,16 @@ namespace XamlPathExplorer {
         private void LoadGeometryInBackgroundThreadFrom(string[] files) {
             var worker = new GeometryBackgroundWorker();
             worker.ProgressChanged += Worker_ProgressChanged;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
 
             wrapPanel.Children.Clear();
             worker.RunWorkerAsync(files);
+            statusBarItem.Content = $"Starting to load paths from {files}";
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            var count = e.Result as int?;
+            statusBarItem.Content = $"Loaded {count} paths";
         }
 
         private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
