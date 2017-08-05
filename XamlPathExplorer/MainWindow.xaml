@@ -61,8 +61,7 @@
               AllowDrop="True"
               DragDrop.DragEnter="wrapPanel_DragEnter"
               DragDrop.DragLeave="wrapPanel_DragLeave"
-              DragDrop.Drop="wrapPanel_Drop"
-              Background="Transparent">
+              DragDrop.Drop="wrapPanel_Drop">
             <Rectangle x:Name="dragAndDropRectangle"
                        Margin="5"
                        Stroke="{DynamicResource HighlightBrush}"

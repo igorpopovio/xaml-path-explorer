@@ -12,15 +12,15 @@ namespace XamlPathExplorer {
         }
 
         public void wrapPanel_DragEnter(object sender, DragEventArgs e) {
-            itemsPanel.Style = (Style)FindResource("DragEnter");
+            dragAndDropContainer.Style = (Style)FindResource("DragEnter");
         }
 
         public void wrapPanel_DragLeave(object sender, DragEventArgs e) {
-            itemsPanel.Style = (Style)FindResource("DragLeave");
+            dragAndDropContainer.Style = (Style)FindResource("DragLeave");
         }
 
         public void wrapPanel_Drop(object sender, DragEventArgs e) {
-            itemsPanel.Style = (Style)FindResource("DragLeave");
+            dragAndDropContainer.Style = (Style)FindResource("DragLeave");
 
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
                 var files = (string[])e.Data.GetData(DataFormats.FileDrop);
