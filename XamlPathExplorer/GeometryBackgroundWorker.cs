@@ -12,7 +12,7 @@ namespace XamlPathExplorer {
     public class GeometryBackgroundWorker : BackgroundWorker {
         private const string Delimiters = "\"<>";
         private const string PathGeometryRegexString =
-            @"(?<=[""<>])[MLCV]\s*[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?[,\s]+";
+            @"[MLCV]\s*[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?[,\s]+";
         private readonly Regex PathGeometryRegex =
             new Regex(PathGeometryRegexString,
                 RegexOptions.IgnoreCase & RegexOptions.Multiline & RegexOptions.Compiled);
@@ -48,7 +48,7 @@ namespace XamlPathExplorer {
                         } else {
                             // FIXME: you can't update the UI from background worker threads
                             // use https://stackoverflow.com/questions/1044460/unhandled-exceptions-in-backgroundworker
-                            System.Windows.Forms.MessageBox.Show($"Failed to render geometry: {pathGeometry}\n from\n{file.FullName}!");
+                            // System.Windows.Forms.MessageBox.Show($"Failed to render geometry: {pathGeometry}\n from\n{file.FullName}!");
                         }
                         index = endingIndex;
                     }
