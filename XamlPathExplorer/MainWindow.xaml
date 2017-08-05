@@ -11,9 +11,8 @@
                       Title="Xaml Path Explorer"
                       ResizeMode="CanResizeWithGrip"
                       BorderBrush="{DynamicResource AccentColorBrush}"
-                      WindowState="Maximized"
-                      Width="600"
-                      Height="300">
+                      Width="735"
+                      Height="600">
     <Controls:MetroWindow.Resources>
         <Style x:Key="DragEnter"
                TargetType="Panel">
