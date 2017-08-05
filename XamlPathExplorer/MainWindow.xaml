@@ -13,11 +13,7 @@
                       BorderBrush="{DynamicResource AccentColorBrush}"
                       WindowState="Maximized"
                       Width="600"
-                      Height="300"
-                      AllowDrop="True"
-                      DragDrop.DragEnter="wrapPanel_DragEnter"
-                      DragDrop.DragLeave="wrapPanel_DragLeave"
-                      DragDrop.Drop="wrapPanel_Drop">
+                      Height="300">
     <Controls:MetroWindow.Resources>
         <Style x:Key="DragEnter"
                TargetType="Panel">
@@ -32,11 +28,12 @@
     </Controls:MetroWindow.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
         <ScrollViewer>
-            <WrapPanel x:Name="wrapPanel"
+            <WrapPanel x:Name="itemsPanel"
                        Margin="10">
                 <i:Interaction.Behaviors>
                     <ei:FluidMoveBehavior AppliesTo="Children"
@@ -58,8 +55,24 @@
 
             </WrapPanel>
         </ScrollViewer>
+
+        <Border x:Name="dragAndDropBorder"
+                Grid.Row="1"
+                AllowDrop="True"
+                DragDrop.DragEnter="wrapPanel_DragEnter"
+                DragDrop.DragLeave="wrapPanel_DragLeave"
+                DragDrop.Drop="wrapPanel_Drop"
+                BorderThickness="0"
+                Background="Transparent">
+            <Rectangle x:Name="dragAndDropRectangle"
+                       Margin="5"
+                       Stroke="{DynamicResource HighlightBrush}"
+                       StrokeThickness="2"
+                       StrokeDashArray="5" />
+        </Border>
+
         <StatusBar x:Name="statusBar"
-                   Grid.Row="1">
+                   Grid.Row="2">
             <StatusBarItem>XAML Path Explorer</StatusBarItem>
             <Separator Style="{StaticResource MetroStatusBarSeparator}" />
             <StatusBarItem x:Name="statusBarItem"
