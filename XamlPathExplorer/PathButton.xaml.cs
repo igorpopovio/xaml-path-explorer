@@ -45,6 +45,7 @@ namespace XamlPathExplorer {
                 typeof(PathButton), new UIPropertyMetadata(DefaultPathGeometry));
 
         public TextEditor Editor { get; set; }
+        public Label LoadedFileLabel { get; set; }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             if (PathDetails == null) {
@@ -52,6 +53,8 @@ namespace XamlPathExplorer {
                 return;
             }
             // System.Windows.Forms.MessageBox.Show("Loaded from: " + PathDetails.File.FullName );
+
+            LoadedFileLabel.Content = PathDetails.File.FullName;
             using (var stream = PathDetails.File.OpenRead()) {
                 Editor.Load(stream);
             }

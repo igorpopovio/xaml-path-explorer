@@ -33,11 +33,13 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
             <RowDefinition Height="100" />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      Grid.RowSpan="2">
             <WrapPanel x:Name="itemsPanel"
                        Margin="10">
                 <i:Interaction.Behaviors>
@@ -62,7 +64,7 @@
         </ScrollViewer>
 
         <Grid x:Name="dragAndDropContainer"
-              Grid.Row="1"
+              Grid.Row="2"
               AllowDrop="True"
               DragDrop.DragEnter="wrapPanel_DragEnter"
               DragDrop.DragLeave="wrapPanel_DragLeave"
@@ -80,7 +82,7 @@
         </Grid>
 
         <StatusBar x:Name="statusBar"
-                   Grid.Row="2"
+                   Grid.Row="3"
                    Grid.ColumnSpan="3">
             <StatusBarItem>XAML Path Explorer</StatusBarItem>
             <Separator Style="{StaticResource MetroStatusBarSeparator}" />
@@ -91,7 +93,10 @@
                       Grid.Column="1"
                       Width="5"
                       ResizeBehavior="PreviousAndNext"
-                      ShowsPreview="True" />
+                      ShowsPreview="True"
+                      Grid.RowSpan="2" />
+        <Label x:Name="LoadedFile" Content="No file loaded..."
+               Grid.Column="2" />
         <avalonEdit:TextEditor xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
                                Name="textEditor"
                                Grid.Column="2"
@@ -102,6 +107,6 @@
                                FontSize="12pt"
                                Background="Transparent"
                                Foreground="#c0c0c0"
-                               />
+                               Grid.Row="1" />
     </Grid>
 </Controls:MetroWindow>
