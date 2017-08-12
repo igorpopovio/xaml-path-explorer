@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="100" Width="300">
     <Grid>
+        <!-- Taken from: https://studiostyl.es/ -->
         <!-- A comment -->
         <StackPanel HorizontalAlignment="Left">
             <Button Click="Clicked">A button</Button>

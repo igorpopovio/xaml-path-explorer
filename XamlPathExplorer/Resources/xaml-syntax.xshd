@@ -1,4 +1,6 @@
 <?xml version="1.0" ?>
+<!-- Documentation: https://github.com/KindDragon/ICSharpCode.TextEditor/blob/master/Project/Resources/Mode.xsd -->
+<!-- Color theme adapted from: https://studiostyl.es/schemes/desertex-revised -->
 <SyntaxDefinition name="XAML" extensions=".xaml">
   <RuleSets>
     <RuleSet ignorecase="false">
