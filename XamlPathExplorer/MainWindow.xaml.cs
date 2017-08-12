@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Media;
+using ICSharpCode.AvalonEdit.Highlighting;
 
 namespace XamlPathExplorer {
     /// <summary>
@@ -9,6 +11,10 @@ namespace XamlPathExplorer {
     public partial class MainWindow {
         public MainWindow() {
             InitializeComponent();
+            var file = @"C:\Users\nrip\Documents\Telerik.Windows.Controls.GridView.xaml";
+            var extension = Path.GetExtension(file);
+            textEditor.Load(file);
+            textEditor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinitionByExtension(extension);
         }
 
         public void wrapPanel_DragEnter(object sender, DragEventArgs e) {

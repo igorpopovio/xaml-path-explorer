@@ -96,6 +96,7 @@
                                Grid.Column="2"
                                FontFamily="Consolas"
                                SyntaxHighlighting="C#"
-                               FontSize="10pt" />
+                               FontSize="10pt"
+                               Background="White" />
     </Grid>
 </Controls:MetroWindow>
