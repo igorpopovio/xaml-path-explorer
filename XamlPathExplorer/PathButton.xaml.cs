@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ICSharpCode.AvalonEdit;
 
 namespace XamlPathExplorer {
     /// <summary>
@@ -43,12 +44,17 @@ namespace XamlPathExplorer {
             DependencyProperty.Register("PathGeometry", typeof(Geometry),
                 typeof(PathButton), new UIPropertyMetadata(DefaultPathGeometry));
 
+        public TextEditor Editor { get; set; }
+
         private void Button_Click(object sender, RoutedEventArgs e) {
             if (PathDetails == null) {
                 System.Windows.Forms.MessageBox.Show("This is just a default example...");
                 return;
             }
-            System.Windows.Forms.MessageBox.Show("Loaded from: " + PathDetails.File.FullName );
+            // System.Windows.Forms.MessageBox.Show("Loaded from: " + PathDetails.File.FullName );
+            using (var stream = PathDetails.File.OpenRead()) {
+                Editor.Load(stream);
+            }
         }
     }
 }

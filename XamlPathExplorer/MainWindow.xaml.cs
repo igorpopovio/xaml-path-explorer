@@ -74,6 +74,7 @@ namespace XamlPathExplorer {
 
         public void LoadGeometryFrom(PathDetails pathDetails) {
             var pathButton = new PathButton { PathDetails = pathDetails };
+            pathButton.Editor = textEditor;
             itemsPanel.Children.Add(pathButton);
         }
     }
