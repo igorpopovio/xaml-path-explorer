@@ -12,9 +12,7 @@ namespace XamlPathExplorer {
         public MainWindow() {
             InitializeComponent();
             var file = @"C:\Users\nrip\Documents\Telerik.Windows.Controls.GridView.xaml";
-            var extension = Path.GetExtension(file);
             textEditor.Load(file);
-            textEditor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinitionByExtension(extension);
         }
 
         public void wrapPanel_DragEnter(object sender, DragEventArgs e) {

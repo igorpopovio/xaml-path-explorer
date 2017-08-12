@@ -95,7 +95,10 @@
                                Name="textEditor"
                                Grid.Column="2"
                                FontFamily="Consolas"
-                               SyntaxHighlighting="C#"
+                               SyntaxHighlighting="XML"
+                               IsReadOnly="True"
+                               ShowLineNumbers="True"
+                               WordWrap="True"
                                FontSize="10pt"
                                Background="White" />
     </Grid>
