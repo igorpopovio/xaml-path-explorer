@@ -42,5 +42,13 @@ namespace XamlPathExplorer {
         public static readonly DependencyProperty PathGeometryProperty =
             DependencyProperty.Register("PathGeometry", typeof(Geometry),
                 typeof(PathButton), new UIPropertyMetadata(DefaultPathGeometry));
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+            if (PathDetails == null) {
+                System.Windows.Forms.MessageBox.Show("This is just a default example...");
+                return;
+            }
+            System.Windows.Forms.MessageBox.Show("Loaded from: " + PathDetails.File.FullName );
+        }
     }
 }

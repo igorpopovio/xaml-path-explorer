@@ -30,7 +30,7 @@
                     Value="Uniform" />
         </Style>
     </UserControl.Resources>
-    <Button Style="{StaticResource PathButtonStyle}">
+    <Button Style="{StaticResource PathButtonStyle}" Click="Button_Click">
         <Path Style="{StaticResource PathButtonPathStyle}"
               Data="{Binding PathGeometry}" />
     </Button>
