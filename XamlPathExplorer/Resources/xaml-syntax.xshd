@@ -1,13 +1,24 @@
 <?xml version="1.0" ?>
 <SyntaxDefinition name="XAML" extensions=".xaml">
+  
+  
   <Properties>
     <Property name="BlockCommentBegin" value="&lt;!--"/>
     <Property name="BlockCommentEnd" value="--&gt;"/>
   </Properties>
+  
+  
+  
   <Digits name="Digits" bold="false" italic="false" color="DarkBlue" />
+  
+  
+  
+  
   <RuleSets>
     <RuleSet ignorecase="false">
       <Delimiters></Delimiters>
+
+      
 
       <Span name="Comment" bold="false" italic="false" color="#7ccd7c" stopateol="false">
         <Begin>&lt;!--</Begin>
@@ -33,6 +44,13 @@
         <Begin>&amp;</Begin>
         <End>;</End>
       </Span>
+
+
+      <KeyWords name="XmlMarkers" bold="false" italic="false" color="Red">
+        <Key word="&lt;" />
+        <Key word="&gt;" />
+      </KeyWords>
+
     </RuleSet>
 
     <RuleSet name="XmlTagSet" ignorecase="false">
@@ -53,13 +71,7 @@
         <Key word="=" />
       </KeyWords>
 
-      <KeyWords name="LessThan" bold="false" italic="false" color="#87ceeb">
-        <Key word="&lt;" />
-      </KeyWords>
 
-      <KeyWords name="GreaterThan" bold="false" italic="false" color="#87ceeb">
-        <Key word="&gt;" />
-      </KeyWords>
 
     </RuleSet>
   </RuleSets>
