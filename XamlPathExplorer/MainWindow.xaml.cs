@@ -68,12 +68,12 @@ namespace XamlPathExplorer {
         }
 
         public void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
-            var pathGeometry = e.UserState as string;
-            LoadGeometry(pathGeometry);
+            var pathDetails = e.UserState as PathDetails;
+            LoadGeometryFrom(pathDetails);
         }
 
-        public void LoadGeometry(string geometry) {
-            itemsPanel.Children.Add(new PathButton { PathGeometry = Geometry.Parse(geometry) });
+        public void LoadGeometryFrom(PathDetails pathDetails) {
+            itemsPanel.Children.Add(new PathButton { PathGeometry = Geometry.Parse(pathDetails.Geometry) });
         }
     }
 }

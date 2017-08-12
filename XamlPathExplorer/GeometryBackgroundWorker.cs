@@ -37,25 +37,28 @@ namespace XamlPathExplorer {
                 while (shouldContinue) {
                     var match = PathGeometryRegex.Match(fileContents, index);
                     if (match.Success) {
-                        var startingIndex = FindBackwardDelimiters(file, fileContents, match.Index, Delimiters) + 1;
-                        var endingIndex = FindForwardDelimiters(file, fileContents, match.Index, Delimiters);
-                        var pathGeometry = fileContents.Substring(startingIndex, endingIndex - startingIndex);
-                        pathGeometry = HttpUtility.HtmlDecode(pathGeometry);
-                        if (IsValidGeometry(pathGeometry)) {
+                        var pathDetails = new PathDetails();
+                        pathDetails.File = file;
+                        pathDetails.StartingIndex = FindBackwardDelimiters(file, fileContents, match.Index, Delimiters) + 1;
+                        pathDetails.EndingIndex = FindForwardDelimiters(file, fileContents, match.Index, Delimiters);
+                        pathDetails.Geometry = fileContents.Substring(pathDetails.StartingIndex, pathDetails.EndingIndex - pathDetails.StartingIndex);
+                        pathDetails.Geometry = HttpUtility.HtmlDecode(pathDetails.Geometry);
+
+                        if (IsValidGeometry(pathDetails.Geometry)) {
                             // the sleep adds a nice effect when adding items
                             // we need to have this only for a few items that fit in the current view
                             // if we have too many then the loading will be too slow
                             if (count < 100) Thread.Sleep(10);
 
                             // FIXME: add progress bar and report proper percentage
-                            ReportProgress(0, pathGeometry);
+                            ReportProgress(0, pathDetails);
                             count++;
                         } else {
                             // FIXME: you can't update the UI from background worker threads
                             // use https://stackoverflow.com/questions/1044460/unhandled-exceptions-in-backgroundworker
                             // System.Windows.Forms.MessageBox.Show($"Failed to render geometry: {pathGeometry}\n from\n{file.FullName}!");
                         }
-                        index = endingIndex;
+                        index = pathDetails.EndingIndex;
                     }
                     shouldContinue = match.Success;
                 }
