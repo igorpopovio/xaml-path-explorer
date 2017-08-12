@@ -37,24 +37,17 @@
         <End>?&gt;</End>
       </Span>
       <Span name="XmlTag" rule="XmlTagSet" bold="false" italic="false" color="#eedc82" stopateol="false">
-        <Begin>&lt;</Begin>
-        <End>&gt;</End>
+        <Begin color="#87ceeb">&lt;</Begin>
+        <End color="#87ceeb">&gt;</End>
       </Span>
       <Span name="EntityReference" bold="false" italic="false" color="Blue" stopateol="true">
         <Begin>&amp;</Begin>
         <End>;</End>
       </Span>
-
-
-      <KeyWords name="XmlMarkers" bold="false" italic="false" color="Red">
-        <Key word="&lt;" />
-        <Key word="&gt;" />
-      </KeyWords>
-
     </RuleSet>
 
     <RuleSet name="XmlTagSet" ignorecase="false">
-      <Delimiters>/=</Delimiters>
+      <Delimiters>/=:</Delimiters>
       <Span name="String" bold="false" italic="false" color="#fa8072" stopateol="true">
         <Begin>&quot;</Begin>
         <End>&quot;</End>
@@ -69,6 +62,9 @@
       </KeyWords>
       <KeyWords name="Assignment" bold="false" italic="false" color="#87ceeb">
         <Key word="=" />
+      </KeyWords>
+      <KeyWords name="Separator" bold="false" italic="false" color="#87ceeb">
+        <Key word=":" />
       </KeyWords>
     </RuleSet>
   </RuleSets>
