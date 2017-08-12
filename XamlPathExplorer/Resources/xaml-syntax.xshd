@@ -25,7 +25,7 @@
         <Begin>&lt;?</Begin>
         <End>?&gt;</End>
       </Span>
-      <Span name="XmlTag" rule="XmlTagSet" bold="false" italic="false" color="DarkMagenta" stopateol="false">
+      <Span name="XmlTag" rule="XmlTagSet" bold="false" italic="false" color="#eedc82" stopateol="false">
         <Begin>&lt;</Begin>
         <End>&gt;</End>
       </Span>
@@ -37,7 +37,7 @@
 
     <RuleSet name="XmlTagSet" ignorecase="false">
       <Delimiters>/=</Delimiters>
-      <Span name="String" bold="false" italic="false" color="Blue" stopateol="true">
+      <Span name="String" bold="false" italic="false" color="#fa8072" stopateol="true">
         <Begin>&quot;</Begin>
         <End>&quot;</End>
       </Span>
@@ -45,11 +45,11 @@
         <Begin>&apos;</Begin>
         <End>&apos;</End>
       </Span>
-      <MarkPrevious bold="false" italic="false" color="Red">=</MarkPrevious>
-      <KeyWords name="Slash" bold="false" italic="false" color="DarkMagenta">
+      <MarkPrevious bold="false" italic="false" color="#87ceeb">=</MarkPrevious>
+      <KeyWords name="Slash" bold="false" italic="false" color="#87ceeb">
         <Key word="/" />
       </KeyWords>
-      <KeyWords name="Assignment" bold="false" italic="false" color="Blue">
+      <KeyWords name="Assignment" bold="false" italic="false" color="#87ceeb">
         <Key word="=" />
       </KeyWords>
     </RuleSet>
