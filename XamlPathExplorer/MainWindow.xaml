@@ -101,6 +101,6 @@
                                ShowLineNumbers="True"
                                WordWrap="True"
                                FontSize="10pt"
-                               Background="White" />
+                               Background="Transparent" />
     </Grid>
 </Controls:MetroWindow>
