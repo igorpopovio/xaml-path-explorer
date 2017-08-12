@@ -96,7 +96,6 @@
                                Name="textEditor"
                                Grid.Column="2"
                                FontFamily="Consolas"
-                               SyntaxHighlighting="XML"
                                IsReadOnly="True"
                                ShowLineNumbers="True"
                                WordWrap="True"
