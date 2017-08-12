@@ -2,7 +2,9 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Media;
+using System.Xml;
 using ICSharpCode.AvalonEdit.Highlighting;
+using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 
 namespace XamlPathExplorer {
     /// <summary>
@@ -11,8 +13,21 @@ namespace XamlPathExplorer {
     public partial class MainWindow {
         public MainWindow() {
             InitializeComponent();
+
+            LoadXamlSyntaxHighlightingDefinition();
+
             var file = @"C:\Users\nrip\Documents\Telerik.Windows.Controls.GridView.xaml";
             textEditor.Load(file);
+        }
+
+        private void LoadXamlSyntaxHighlightingDefinition() {
+            var resourceNames = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            var xamlSyntax = "XamlPathExplorer.Resources.xaml-syntax.xshd";
+            using (var stream = Application.ResourceAssembly.GetManifestResourceStream(xamlSyntax)) {
+                using (var reader = new XmlTextReader(stream)) {
+                    textEditor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
+                }
+            }
         }
 
         public void wrapPanel_DragEnter(object sender, DragEventArgs e) {
