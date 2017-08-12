@@ -16,12 +16,14 @@ namespace XamlPathExplorer {
 
             LoadXamlSyntaxHighlightingDefinition();
 
-            var file = @"C:\Users\nrip\Documents\Telerik.Windows.Controls.GridView.xaml";
-            textEditor.Load(file);
+            var resourceNames = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            var xamlSyntax = "XamlPathExplorer.Resources.studiostyles.xaml";
+            using (var stream = Application.ResourceAssembly.GetManifestResourceStream(xamlSyntax)) {
+                textEditor.Load(stream);
+            }
         }
 
         private void LoadXamlSyntaxHighlightingDefinition() {
-            var resourceNames = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
             var xamlSyntax = "XamlPathExplorer.Resources.xaml-syntax.xshd";
             using (var stream = Application.ResourceAssembly.GetManifestResourceStream(xamlSyntax)) {
                 using (var reader = new XmlTextReader(stream)) {
