@@ -9,7 +9,7 @@
     <RuleSet ignorecase="false">
       <Delimiters></Delimiters>
 
-      <Span name="Comment" bold="false" italic="false" color="Green" stopateol="false">
+      <Span name="Comment" bold="false" italic="false" color="#7ccd7c" stopateol="false">
         <Begin>&lt;!--</Begin>
         <End>--&gt;</End>
       </Span>
