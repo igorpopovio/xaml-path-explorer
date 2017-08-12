@@ -24,7 +24,7 @@
         <Begin>&lt;!--</Begin>
         <End>--&gt;</End>
       </Span>
-      <Span name="CDataSection" bold="false" italic="false" color="Blue" stopateol="false">
+      <Span name="CDataSection" bold="false" italic="false" color="#808080" stopateol="false">
         <Begin>&lt;![CDATA[</Begin>
         <End>]]&gt;</End>
       </Span>
@@ -70,9 +70,6 @@
       <KeyWords name="Assignment" bold="false" italic="false" color="#87ceeb">
         <Key word="=" />
       </KeyWords>
-
-
-
     </RuleSet>
   </RuleSets>
 </SyntaxDefinition>

@@ -14,6 +14,9 @@ namespace XamlPathExplorer {
         public MainWindow() {
             InitializeComponent();
 
+            textEditor.Options.EnableHyperlinks = false;
+
+
             LoadXamlSyntaxHighlightingDefinition();
 
             var resourceNames = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
