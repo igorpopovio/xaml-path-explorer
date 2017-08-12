@@ -1,25 +1,8 @@
 <?xml version="1.0" ?>
 <SyntaxDefinition name="XAML" extensions=".xaml">
-  
-  
-  <Properties>
-    <Property name="BlockCommentBegin" value="&lt;!--"/>
-    <Property name="BlockCommentEnd" value="--&gt;"/>
-  </Properties>
-  
-  
-  
-  <Digits name="Digits" bold="false" italic="false" color="DarkBlue" />
-  
-  
-  
-  
   <RuleSets>
     <RuleSet ignorecase="false">
       <Delimiters></Delimiters>
-
-      
-
       <Span name="Comment" bold="false" italic="false" color="#7ccd7c" stopateol="false">
         <Begin>&lt;!--</Begin>
         <End>--&gt;</End>
@@ -28,21 +11,9 @@
         <Begin>&lt;![CDATA[</Begin>
         <End>]]&gt;</End>
       </Span>
-      <Span name="DocTypeSection" bold="false" italic="false" color="Blue" stopateol="false">
-        <Begin>&lt;!DOCTYPE</Begin>
-        <End>&gt;</End>
-      </Span>
-      <Span name="XmlDecl" bold="false" italic="false" color="Blue" stopateol="false">
-        <Begin>&lt;?</Begin>
-        <End>?&gt;</End>
-      </Span>
       <Span name="XmlTag" rule="XmlTagSet" bold="false" italic="false" color="#eedc82" stopateol="false">
         <Begin color="#87ceeb">&lt;</Begin>
         <End color="#87ceeb">&gt;</End>
-      </Span>
-      <Span name="EntityReference" bold="false" italic="false" color="Blue" stopateol="true">
-        <Begin>&amp;</Begin>
-        <End>;</End>
       </Span>
     </RuleSet>
 
@@ -52,7 +23,7 @@
         <Begin>&quot;</Begin>
         <End>&quot;</End>
       </Span>
-      <Span name="Char" bold="false" italic="false" color="Blue" stopateol="true">
+      <Span name="Char" bold="false" italic="false" color="#fa8072" stopateol="true">
         <Begin>&apos;</Begin>
         <End>&apos;</End>
       </Span>
