@@ -26,12 +26,17 @@
         </Style>
     </Controls:MetroWindow.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
-        <ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <WrapPanel x:Name="itemsPanel"
                        Margin="10">
                 <i:Interaction.Behaviors>
@@ -60,7 +65,8 @@
               AllowDrop="True"
               DragDrop.DragEnter="wrapPanel_DragEnter"
               DragDrop.DragLeave="wrapPanel_DragLeave"
-              DragDrop.Drop="wrapPanel_Drop">
+              DragDrop.Drop="wrapPanel_Drop"
+              Grid.ColumnSpan="3">
             <Rectangle x:Name="dragAndDropRectangle"
                        Margin="5"
                        Stroke="{DynamicResource HighlightBrush}"
@@ -69,16 +75,27 @@
             <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="35"
-                       Foreground="{DynamicResource TextBrush}"
-                       Text="Drag and drop files here..." />
+                       Foreground="{DynamicResource TextBrush}"><Run Text="Drag and drop files here..." /></TextBlock>
         </Grid>
 
         <StatusBar x:Name="statusBar"
-                   Grid.Row="2">
+                   Grid.Row="2"
+                   Grid.ColumnSpan="3">
             <StatusBarItem>XAML Path Explorer</StatusBarItem>
             <Separator Style="{StaticResource MetroStatusBarSeparator}" />
             <StatusBarItem x:Name="statusBarItem"
                            Content="Ready! Drag and drop files in the app..." />
         </StatusBar>
+        <GridSplitter Background="{DynamicResource AccentColorBrush}"
+                      Grid.Column="1"
+                      Width="5"
+                      ResizeBehavior="PreviousAndNext"
+                      ShowsPreview="True" />
+        <avalonEdit:TextEditor xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+                               Name="textEditor"
+                               Grid.Column="2"
+                               FontFamily="Consolas"
+                               SyntaxHighlighting="C#"
+                               FontSize="10pt" />
     </Grid>
 </Controls:MetroWindow>
