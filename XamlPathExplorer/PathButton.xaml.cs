@@ -56,8 +56,8 @@ namespace XamlPathExplorer {
                 Editor.Load(stream);
             }
 
-            // Editor.ScrollTo(80, 5);
             Editor.Select(PathDetails.StartingIndex, PathDetails.Length);
+            Editor.ScrollToLine(PathDetails.LineNumber);
         }
     }
 }
