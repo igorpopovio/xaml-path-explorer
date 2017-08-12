@@ -6,5 +6,6 @@ namespace XamlPathExplorer {
         public FileInfo File { get; set; }
         public int StartingIndex { get; set; }
         public int EndingIndex { get; set; }
+        public int Length { get; set; }
     }
 }

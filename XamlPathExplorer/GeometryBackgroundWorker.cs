@@ -41,7 +41,8 @@ namespace XamlPathExplorer {
                         pathDetails.File = file;
                         pathDetails.StartingIndex = FindBackwardDelimiters(file, fileContents, match.Index, Delimiters) + 1;
                         pathDetails.EndingIndex = FindForwardDelimiters(file, fileContents, match.Index, Delimiters);
-                        pathDetails.Geometry = fileContents.Substring(pathDetails.StartingIndex, pathDetails.EndingIndex - pathDetails.StartingIndex);
+                        pathDetails.Length = pathDetails.EndingIndex - pathDetails.StartingIndex;
+                        pathDetails.Geometry = fileContents.Substring(pathDetails.StartingIndex, pathDetails.Length);
                         pathDetails.Geometry = HttpUtility.HtmlDecode(pathDetails.Geometry);
 
                         if (IsValidGeometry(pathDetails.Geometry)) {

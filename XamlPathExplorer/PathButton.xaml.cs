@@ -55,6 +55,9 @@ namespace XamlPathExplorer {
             using (var stream = PathDetails.File.OpenRead()) {
                 Editor.Load(stream);
             }
+
+            // Editor.ScrollTo(80, 5);
+            Editor.Select(PathDetails.StartingIndex, PathDetails.Length);
         }
     }
 }
