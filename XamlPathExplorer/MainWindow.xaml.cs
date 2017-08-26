@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
-using System.IO;
 using System.Windows;
-using System.Windows.Media;
+using System.Windows.Controls;
 using System.Xml;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
@@ -74,9 +73,25 @@ namespace XamlPathExplorer {
 
         public void LoadGeometryFrom(PathDetails pathDetails) {
             var pathButton = new PathButton { PathDetails = pathDetails };
-            pathButton.Editor = textEditor;
-            pathButton.LoadedFileLabel = LoadedFile;
+            pathButton.Click += PathButton_Click;
             itemsPanel.Children.Add(pathButton);
+        }
+
+        private void PathButton_Click(object sender, RoutedEventArgs e) {
+            var button = (sender as Button).Parent as PathButton;
+
+            if (button.PathDetails == null) {
+                System.Windows.Forms.MessageBox.Show("This is just a default example...");
+                return;
+            }
+
+            LoadedFile.Content = button.PathDetails.File.FullName;
+            using (var stream = button.PathDetails.File.OpenRead()) {
+                textEditor.Load(stream);
+            }
+
+            textEditor.Select(button.PathDetails.StartingIndex, button.PathDetails.Length);
+            textEditor.ScrollToLine(button.PathDetails.LineNumber);
         }
     }
 }
