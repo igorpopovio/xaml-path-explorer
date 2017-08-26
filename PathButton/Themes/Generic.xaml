@@ -33,8 +33,7 @@
                      Color="#FFADB2B5" />
     <SolidColorBrush x:Key="Button.Disabled.Foreground"
                      Color="#FF838383" />
-    <Style x:Key="PathButtonStyle"
-           TargetType="{x:Type Button}">
+    <Style TargetType="{x:Type local:PathButton}">
         <Setter Property="FocusVisualStyle"
                 Value="{StaticResource FocusVisual}" />
         <Setter Property="Background"
