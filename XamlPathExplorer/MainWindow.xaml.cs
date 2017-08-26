@@ -59,11 +59,13 @@ namespace XamlPathExplorer {
             itemsPanel.Children.Clear();
             worker.RunWorkerAsync(files);
             statusBarItem.Content = $"Starting to load paths from {files}";
+            progressBar.Visibility = Visibility.Visible;
         }
 
         public void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             var count = e.Result as int?;
-            // statusBarItem.Content = $"Loaded {count} paths";
+            statusBarItem.Content = $"Loaded {count} paths";
+            progressBar.Visibility = Visibility.Collapsed;
         }
 
         public void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
@@ -71,6 +73,7 @@ namespace XamlPathExplorer {
             LoadGeometryFrom(pathDetails);
             
             statusBarItem.Content = $"Looked inside the first {e.ProgressPercentage}% files...";
+            progressBar.Value = e.ProgressPercentage;
         }
 
         public void LoadGeometryFrom(PathDetails pathDetails) {

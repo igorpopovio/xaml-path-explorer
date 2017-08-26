@@ -56,7 +56,6 @@ namespace XamlPathExplorer {
 
                             // FIXME: add progress bar and report proper percentage
                             int percentProgress = (int)(currentFileIndex * 100.0 / files.Count());
-                            pathDetails.Notes = $"currentFileIndex = {currentFileIndex}; filesCount = {files.Count()}";
                             ReportProgress(percentProgress, pathDetails);
                             count++;
                         } else {
