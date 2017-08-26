@@ -63,12 +63,14 @@ namespace XamlPathExplorer {
 
         public void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             var count = e.Result as int?;
-            statusBarItem.Content = $"Loaded {count} paths";
+            // statusBarItem.Content = $"Loaded {count} paths";
         }
 
         public void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
             var pathDetails = e.UserState as PathDetails;
             LoadGeometryFrom(pathDetails);
+            
+            statusBarItem.Content = $"Looked inside the first {e.ProgressPercentage}% files...";
         }
 
         public void LoadGeometryFrom(PathDetails pathDetails) {

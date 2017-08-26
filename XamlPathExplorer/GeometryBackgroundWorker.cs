@@ -27,8 +27,10 @@ namespace XamlPathExplorer {
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e) {
             var files = LoadAllFilesFrom(e.Argument as string[]);
+            var currentFileIndex = 0;
 
             foreach (var file in files) {
+                currentFileIndex++;
                 var fileContents = file.OpenText().ReadToEnd();
 
                 var index = 0;
@@ -50,10 +52,12 @@ namespace XamlPathExplorer {
                             // the sleep adds a nice effect when adding items
                             // we need to have this only for a few items that fit in the current view
                             // if we have too many then the loading will be too slow
-                            if (count < 100) Thread.Sleep(10);
+                            if (count < 100) Thread.Sleep(100);
 
                             // FIXME: add progress bar and report proper percentage
-                            ReportProgress(0, pathDetails);
+                            int percentProgress = (int)(currentFileIndex * 100.0 / files.Count());
+                            pathDetails.Notes = $"currentFileIndex = {currentFileIndex}; filesCount = {files.Count()}";
+                            ReportProgress(percentProgress, pathDetails);
                             count++;
                         } else {
                             // FIXME: you can't update the UI from background worker threads
