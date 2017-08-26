@@ -8,8 +8,10 @@
                 <ControlTemplate TargetType="{x:Type local:PathButton}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}">
+                        <ContentControl Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
